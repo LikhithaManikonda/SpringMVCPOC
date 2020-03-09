@@ -1,0 +1,23 @@
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+<!-- context:component-scan will scan all the classes in the given packages by IOC and creates the objects for all the classes -->
+   <context:component-scan base-package = "com.ibs.controller" />
+   <context:component-scan base-package = "com.ibs.dao" />
+   <context:component-scan base-package = "com.ibs.Business" />   
+  <!-- To inject those objects which were created above  by annotation we no need to instantiate all the classes of 
+  annotations(such as AutowiredAnnotationBeanPostProcessor/RequiredAnnotationBeanPostProcessor etc.,)
+  instead we can use the following --> 
+  <context:annotation-config/>
+  <!-- <bean class = "org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean> -->
+   <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name = "prefix" value = "/WEB-INF/jsp/" />
+      <property name = "suffix" value = ".jsp" />
+   </bean>
+
+</beans>
